@@ -1,7 +1,6 @@
 package domain
 
 import (
-	"github.com/google/uuid"
 	"strings"
 	"time"
 )
@@ -9,7 +8,6 @@ import (
 type Product struct {
 	ID          int
 	CategoryID  int
-	GUID        uuid.UUID
 	SKU         string
 	Title       string
 	Description string

@@ -17,11 +17,11 @@ var (
 )
 
 type GetProductsQueryParam struct {
-	SKU        string
-	Title      string
-	CategoryID int
-	Etalase    string
-	Rating     float32
+	SKU          string
+	Title        string
+	CategoryGUID uuid.UUID
+	Etalase      string
+	Rating       float32
 
 	// sort
 	SortBy string
@@ -67,7 +67,7 @@ func (param GetProductsQueryParam) Validate() error {
 		isValidOrder := array.IsContain(validOrderAction, param.Order)
 		if !isValidOrder {
 			return errcustom.ErrorInvalidField{
-				Field:         "sort by",
+				Field:         "order",
 				AcceptedValue: strings.Join(validOrderAction, ", "),
 			}
 		}
@@ -77,11 +77,10 @@ func (param GetProductsQueryParam) Validate() error {
 }
 
 type GetProductsResponse struct {
-	GUID        uuid.UUID
 	Title       string
 	Description string
 	Category    string
-	Etalase     int
+	Etalase     []domain.ProductEtalase
 	Images      []domain.ProductImage
 	Weight      float32
 	Price       float32

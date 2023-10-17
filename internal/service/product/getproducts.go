@@ -51,7 +51,6 @@ func (param GetProductsQueryParam) Validate() error {
 				AcceptedValue: strings.Join(domain.ProductEtalaseStrs, ", "),
 			}
 		}
-
 	}
 
 	if param.SortBy != "" {

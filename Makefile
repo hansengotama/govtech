@@ -13,4 +13,7 @@ ifndef TERN
 endif
 
 migrate: check-go check-tern
-	tern migrate -m "sql/migration"
+	tern migrate -m "sql/schema"
+
+run: check-go
+	go run *.go
